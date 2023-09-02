@@ -97,4 +97,9 @@ fn main() {
         }
     }
     println!("Answer: {}", input_num[0]);               // printing answer
+
+    let mut end = String::new();                // help variable without use
+    io::stdin()                                   // input here, so the program won't end right after it shows the asnwer
+    .read_line(&mut end)
+    .expect("Fail");
 }
