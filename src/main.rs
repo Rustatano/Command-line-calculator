@@ -2,7 +2,7 @@ use std::io;
 
 fn main() {
     loop {
-        print!("\x1B[2J\x1b[1;1H");
+        // print!("\x1B[2J\x1b[1;1H");
 
         println!("Simple Calculator");
         println!("Write a math problem: ");
