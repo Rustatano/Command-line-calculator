@@ -43,3 +43,66 @@ pub fn split_input(input: &Vec<char>)  -> Input {
 
     Input { num, ope, }
 }
+
+pub fn multi_div_opes(input: &mut Input) -> Input {
+    let mut ope_index = 0;
+    let ope_clone = input.ope.clone();
+    for op in ope_clone {
+        let switch: bool;
+        (input.num[ope_index], ope_index, switch) = match op {
+            Operator::Multi => (
+                input.num[ope_index] * input.num[ope_index + 1], 
+                ope_index, 
+                true,
+            ), 
+            Operator::Div => (
+                input.num[ope_index] / input.num[ope_index + 1], 
+                ope_index, 
+                true,
+            ), 
+            _ => (
+                input.num[ope_index], 
+                ope_index + 1,
+                false,
+            ), 
+        };
+        if switch {
+            input.ope.remove(ope_index);
+            input.num.remove(ope_index + 1);
+        }
+    }
+
+    Input { num: input.num.clone(), ope: input.ope.clone() }
+}
+
+pub fn add_sub_opes(input: &mut Input) -> Input {
+    let mut ope_index = 0;
+    let ope_clone = input.ope.clone();
+    for op in ope_clone {
+        let switch: bool;
+        (input.num[ope_index], ope_index, switch) = match op {
+            Operator::Add => (
+                input.num[ope_index] + input.num[ope_index + 1], 
+                ope_index, 
+                true
+            ), 
+            Operator::Sub => (
+                input.num[ope_index] - input.num[ope_index + 1], 
+                ope_index, 
+                true
+            ), 
+            _ => (
+                input.num[ope_index], 
+                ope_index + 1, 
+                false
+            ), 
+        };
+
+        if switch {
+            input.ope.remove(ope_index);
+            input.num.remove(ope_index + 1);
+        }
+    }
+
+    Input { num: input.num.clone(), ope: input.ope.clone() }
+}
