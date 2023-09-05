@@ -1,29 +1,28 @@
 use std::io;
 
-fn main() {  // add loop
-    print!("\x1B[2J\x1b[1;1H");
+fn main() {
+    loop {
+        print!("\x1B[2J\x1b[1;1H");
 
-    println!("Simple Calculator");
-    println!("Write a math problem: ");
+        println!("Simple Calculator");
+        println!("Write a math problem: ");
 
-    let mut input = String::new();
-    io::stdin() 
-    .read_line(&mut input)
-    .expect("Invalid input");
+        let mut input = String::new();
 
-    let input: String = input.split_whitespace().collect();
-    let input: Vec<char> = input.chars().collect();
-    let mut input = calculator::split_input(&input);
-    
-    let mut input = calculator::multi_div_opes(&mut input);
+        match io::stdin().read_line(&mut input) {
+            Ok(_) => (),
+            Err(e) => eprintln!("Failed reading input: {e}"),
+        };
 
-    let input = calculator::add_sub_opes(&mut input);
+        if let Err(e) = calculator::run(input) {
+            eprintln!("Application Error: {e}");
+        }
 
-    println!("Answer: {}", input.num[0]);
+        let mut end = String::new();
 
-    let mut end: String = String::new();
-
-    io::stdin() 
-    .read_line(&mut end)
-    .expect("Fail");
+        match io::stdin().read_line(&mut end) {
+            Ok(_) => (),
+            Err(e) => eprintln!("Failed reading input: {e}"),
+        };
+    }
 }
