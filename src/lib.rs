@@ -1,6 +1,6 @@
 use std::error::Error;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub enum Operator {
     Add, 
     Sub, 
@@ -22,17 +22,31 @@ impl Input {
 
         for ch in input {
             if ch == '+' {
-                ope.push(Operator::Add);
+                if ope.len() > 0 {
+                    match ope.last().unwrap() {
+                        Operator::Add => (),
+                        Operator::Sub => (),
+                        _ => ope.push(Operator::Add),
+                    };
+                    println!("{:?}", ope);
+                } else {
+                    ope.push(Operator::Add);
+                }
                 num_tmp.push(String::new());
+
             } else if ch == '-' {
                 ope.push(Operator::Sub);
                 num_tmp.push(String::new());
+                
+
             } else if ch == '*' {
                 ope.push(Operator::Multi);
                 num_tmp.push(String::new());
+
             } else if ch == '/' {
                 ope.push(Operator::Div);
                 num_tmp.push(String::new());
+
             } else {
                 num_tmp.last_mut().unwrap().push_str(&ch.to_string());
             }
