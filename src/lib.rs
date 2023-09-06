@@ -51,6 +51,7 @@ impl Input {
 pub fn multi_div_opes(input: &mut Input) -> Input {
     let mut ope_index = 0;
     let ope_clone = input.ope.clone();
+
     for op in ope_clone {
         let switch: bool;
         (input.num[ope_index], ope_index, switch) = match op {
@@ -70,6 +71,7 @@ pub fn multi_div_opes(input: &mut Input) -> Input {
                 false,
             ), 
         };
+
         if switch {
             input.ope.remove(ope_index);
             input.num.remove(ope_index + 1);
@@ -82,6 +84,7 @@ pub fn multi_div_opes(input: &mut Input) -> Input {
 pub fn add_sub_opes(input: &mut Input) -> Input {
     let mut ope_index = 0;
     let ope_clone = input.ope.clone();
+    
     for op in ope_clone {
         let switch: bool;
         (input.num[ope_index], ope_index, switch) = match op {
