@@ -5,3 +5,5 @@
 /target/release/!calculator.exe
 
 /target/.rustc_info.json
+
+/.vscode

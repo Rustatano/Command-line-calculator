@@ -1,5 +1,7 @@
 use std::io;
 
+use calculator::calculate;
+
 fn main() {
     loop {
         println!("Simple Calculator");
@@ -11,7 +13,7 @@ fn main() {
             Err(e1) => eprintln!("Failed reading input: {e1}"),
         };
 
-        if let Err(e2) = calculator::run(input) {
+        if let Err(e2) = calculate::calculate(input) {
             eprintln!("Application Error: {e2}");
         };
         
