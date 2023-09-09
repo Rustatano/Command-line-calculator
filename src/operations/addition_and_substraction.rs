@@ -1,5 +1,7 @@
-use crate::input::Input;
-use crate::operator::Operator;
+use crate::{
+    input::Input, 
+    operator::Operator
+};
 
 pub fn addition_and_substraction(input: &mut Input) -> Input {
     let mut ope_index = 0;
@@ -30,5 +32,5 @@ pub fn addition_and_substraction(input: &mut Input) -> Input {
         }
     }
 
-    Input { numbers: input.numbers.clone(), operators: input.operators.clone() }
+    Input { numbers: input.numbers.clone(), operators: input.operators.clone(), brackets: input.brackets.clone() }
 }
