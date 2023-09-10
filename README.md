@@ -2,4 +2,4 @@
 - Simple command line calculator with 4 operators -->  <"+ - * /">
 - Brackets can be used -->  <"( )">
 
-Release 1.0.6
+Release 1.1.0
