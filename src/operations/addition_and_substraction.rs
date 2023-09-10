@@ -32,5 +32,5 @@ pub fn addition_and_substraction(input: &mut Input) -> Input {
         }
     }
 
-    Input { numbers: input.numbers.clone(), operators: input.operators.clone(), brackets: input.brackets.clone() }
+    Input { numbers: input.numbers.clone(), operators: input.operators.clone() }
 }

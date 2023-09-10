@@ -32,5 +32,5 @@ pub fn multiplication_and_division(input: &mut Input) -> Input {
         }
     }
 
-    Input { numbers: input.numbers.clone(), operators: input.operators.clone(), brackets: input.brackets.clone()}
+    Input { numbers: input.numbers.clone(), operators: input.operators.clone()}
 }
